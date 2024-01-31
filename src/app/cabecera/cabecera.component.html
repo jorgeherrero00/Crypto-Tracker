@@ -1,0 +1,17 @@
+<header>
+    <a class="button logo" routerLink="" routerLinkActive="activebutton">Crypto</a>
+    <div class="menuToggle" onclick="toggleMenu()"></div>
+    <ul class="nav">
+        <li><a class="button" routerLink="cuerpo" routerLinkActive="activebutton">Cryptos más famosas</a></li>
+        <li><a class="button" routerLink="portafolio" routerLinkActive="activebutton">Mi portafolio</a></li>
+        
+        <!-- Mostrar botones solo si el usuario no está autenticado -->
+        <li *ngIf="!this.autenticado"><a class="button" (click)="iniciaSesionGoogle()"><img width="40px" height="40px" src="../../assets/images/logo_google.png" alt=""></a></li>
+        <li *ngIf="!this.autenticado"><a class="button" (click)="iniciaSesionGitHub()"><img width="40px" height="40px" src="../../assets/images/logo_github.png" alt=""></a></li>
+        
+        <!-- Mostrar botón solo si el usuario está autenticado -->
+        <li *ngIf="this.autenticado"><a class="button" (click)="cerrarSesion()" routerLink="">Cerrar Sesion</a></li>
+    </ul>
+    <nav>
+    </nav>
+</header>

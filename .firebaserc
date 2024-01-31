@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "crypto-tracker-5ce6f"
+  },
+  "targets": {
+    "crypto-tracker-5ce6f": {
+      "hosting": {
+        "proyecto-crypto": [
+          "crypto-tracker-5ce6f"
+        ]
+      }
+    }
+  }
+}

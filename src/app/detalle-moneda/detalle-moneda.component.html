@@ -1,0 +1,20 @@
+<section class="mercado" id="mercados">
+  <div *ngIf="ajax.datosDetalle" class="cards">
+    <div class="card-detalle">
+      <ul >
+        <li>Nombre: {{ ajax.datosDetalle.name }}</li>
+        <li>Id: {{ ajax.datosDetalle.id }}</li>
+        <img [src]="ajax.datosDetalle.image.small" alt="">
+        <li>Simbolo: {{ ajax.datosDetalle.symbol }}</li>
+        <li>
+          Descripción:
+          <div [innerHTML]="ajax.datosDetalle.description.es || ajax.datosDetalle.description.en || 'Sin descripción'"></div>
+        </li>
+        <li>Repos URL: <a href="{{ ajax.datosDetalle.links.repos_url.github }}">{{ ajax.datosDetalle.links.repos_url.github }}</a></li>
+        <li>Página principal: {{ ajax.datosDetalle.links.homepage || 'No tiene página principal' }}</li>
+        <li>Precio Actual en Euros: {{ ajax.datosDetalle.market_data.current_price.eur }}€</li>
+        <li>Fecha en la que surgió: {{ ajax.datosDetalle.genesis_date || 'No se conoce' }}</li>
+      </ul>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,35 @@
+<div class="divCuerpo">
+    <div>
+      <label for="">Buscar Monedas:</label>
+      <input style="background-color:#94d3f9" type="text" placeholder="Introduzca el nombre de la moneda" (keyup)="busquedaMoneda(contenidoInput)" [(ngModel)]="contenidoInput">
+      
+      <ul *ngIf="contenidoInput">
+        <div class="card">
+          <li role="button" *ngFor="let valor of ajax.datosMoneda; let i = index" (click)="lanzadaPeticionEvent.emit(valor.id)">
+            <a [routerLink]="['/detalle/', valor.id]">{{ valor.name | uppercase }}</a>
+            <img [src]="valor.thumb" alt="">
+  
+            <!-- Utiliza *ngIf para mostrar/ocultar el botón según si el usuario sigue la moneda -->
+            <button *ngIf="monedaEstaEnPortafolio(valor.id)" (click)="ajax.dejarDeSeguir(idUsuario, valor.id)">Dejar de seguir</button>
+            <button *ngIf="!monedaEstaEnPortafolio(valor.id)" (click)="ajax.seguirCrypto(idUsuario, valor.id)">Seguir</button>
+          </li>
+        </div>
+      </ul>
+  
+      <ul *ngIf="!contenidoInput">
+        <h2>Cryptos más famosas:</h2>
+        <div class="card">
+          <li role="button" *ngFor="let valor of ajax.datosApi; let i = index" (click)="lanzadaPeticionEvent.emit(valor.item.id)">
+            <a [routerLink]="['/detalle/', valor.item.id]">{{ valor.item.name | uppercase }}</a>
+            <a [routerLink]="['/detalle/', valor.item.id]"><img src="{{ valor.item.small }}" alt=""></a>
+            <img [src]="valor.item.data.sparkline" alt="">
+  
+            <!-- Utiliza *ngIf para mostrar/ocultar el botón según si el usuario sigue la moneda -->
+            <button *ngIf="monedaEstaEnPortafolio(valor.item.id)" (click)="ajax.dejarDeSeguir(idUsuario, valor.item.id)">Dejar de seguir</button>
+            <button *ngIf="!monedaEstaEnPortafolio(valor.item.id)" (click)="ajax.seguirCrypto(idUsuario, valor.item.id)">Seguir</button>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+  

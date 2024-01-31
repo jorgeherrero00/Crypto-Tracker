@@ -1,0 +1,9 @@
+<div class="divPortafolio" >
+    <ul *ngFor="let detalle of ajax.detallesPortafolio" class="detalle-portfolio">
+      <img [src]="detalle.image.small" alt="">
+      <li>Nombre: {{detalle.name}}</li>
+      <li>Simbolo: {{detalle.symbol}}</li>
+      <li>Precio Actual en Euros: {{detalle.market_data.current_price.eur}}€</li>
+      <a  routerLink="/portafolio" routerLinkActive="router-link-active"  (click)="ajax.dejarDeSeguir(idUsuario, detalle.id)">Dejar de seguir</a>
+    </ul>
+  </div>
